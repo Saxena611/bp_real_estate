@@ -1,0 +1,8 @@
+<!-- Footer -->
+<footer id="main-footer" class="py-4 bg-primary text-white text-center">
+    Copyright &copy;
+    {% for areain in arealist %}
+        <a href="{% url 'propertyin' areain.id %}" class="btn btn-primary btn-block">Property in {{areain.area_name}}</a></div>
+    {% endfor %}
+    <span class="year"></span> DEV_ANI
+</footer>
