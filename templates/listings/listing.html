@@ -296,11 +296,11 @@
             <input type="hidden" name="request_id" value="{{ listing.id }}">
             <div class="form-group">
               <label for="name" class="col-form-label">Name:</label>
-              <input type="text" name="name" class="form-control" required>
+              <input type="text" name="name" class="form-control"  {% if user.is_authenticated %} value = "{{user.first_naeme}} {{user.last_name}}" {% endif %} required readonly>
             </div>
             <div class="form-group">
               <label for="email" class="col-form-label">Email:</label>
-              <input type="email" name="email" class="form-control" required>
+              <input type="email" name="email" class="form-control" {% if user.is_authenticated %} value = "{{user.email}}" {% endif %} required readonly>
             </div>
             <div class="form-group">
               <label for="phone" class="col-form-label">Phone:</label>
@@ -310,6 +310,12 @@
               <label for="message" class="col-form-label">Message:</label>
               <textarea name="message" class="form-control"></textarea>
             </div>
+            {% if user.is_authenticated %}
+              <input type="hidden" name="user_id" value="{{user.id}}">
+              {{user.id}}
+            {% else %}
+              <input type="hidden" name="user_id" value="0">
+            {% endif %}
             <hr>
             <input type="submit" value="Send" class="btn btn-block btn-secondary">
           </form>

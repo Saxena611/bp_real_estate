@@ -40,9 +40,19 @@
             <i class="fas fa-headset"></i> Get Free Property Consulation</a>
         </li>
         <li class="nav-item mr-3">
-          <a class="nav-link" href="" data-toggle="modal" data-target="#postpropertyModal">
+          <a class="nav-link" href="">
             <i class="fas fa-home"></i> Post your Property & Collaborate </a>
         </li>
+        {% if user.is_authenticated %}
+        <li class="nav-item mr-3">
+          <a class="nav-link" href="{% url 'logout' %}">Logout </a>
+        </li>
+        {% else %}
+        <li class="nav-item mr-3">
+          <a class="nav-link" href="{% url 'login' %}">Login </a>
+        </li>
+        {% endif %}
+      
       </ul>
     </div>
   </div>

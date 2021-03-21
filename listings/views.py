@@ -3,6 +3,7 @@ from .models import Listing
 from areaprops.models import Area 
 from django.shortcuts import render,get_object_or_404
 from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
+from .forms import ListingForm
 # Create your views here.
 def index(request):
     listings = Listing.objects.order_by('-list_date').filter(is_published=True)
@@ -28,3 +29,6 @@ def listing(request,listing_id):
 def search(request):
     return render(request,'listings/search.html')
 
+def postproperty(request):
+    prop =  ListingForm()
+    return render(request,'listings/postproperty.html',{'form':prop})
